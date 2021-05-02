@@ -9,11 +9,30 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-extern {
-    fn alert(s: &str);
+extern "C" {
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(a: &str);
+}
+
+macro_rules! console_log {
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+}
+
+fn fib(n: u32) -> u32 {
+    if n <= 1 {
+        return n
+    }
+
+    fib(n - 1) + fib(n - 2)
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, wasm-speed-test!");
+pub fn calc(n: u32) {
+
+    let window = web_sys::window().expect("should have a window in this context");
+    let performance = window.performance().expect("performance should be available");
+    console_log!("n: {}", n);
+    console_log!("start lib {}", performance.now());
+    console_log!("fib result {}", fib(n));
+    console_log!("end fib {}", performance.now());
 }
