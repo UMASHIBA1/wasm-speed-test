@@ -32,7 +32,10 @@ pub fn calc(n: u32) {
     let window = web_sys::window().expect("should have a window in this context");
     let performance = window.performance().expect("performance should be available");
     console_log!("n: {}", n);
-    console_log!("start lib {}", performance.now());
+    let startFib = performance.now();
+    console_log!("start lib {}", startFib);
     console_log!("fib result {}", fib(n));
-    console_log!("end fib {}", performance.now());
+    let endFib = performance.now();
+    console_log!("end fib {}", endFib);
+    console_log!("processing time: {}ms", endFib - startFib);
 }
