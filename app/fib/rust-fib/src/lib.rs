@@ -18,7 +18,7 @@ macro_rules! console_log {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
-fn fib(n: u32) -> u32 {
+fn fib(n: i64) -> i64 {
     if n <= 1 {
         return n
     }
@@ -27,7 +27,7 @@ fn fib(n: u32) -> u32 {
 }
 
 #[wasm_bindgen]
-pub fn calc(n: u32) {
+pub fn calc(n: i64) {
 
     let window = web_sys::window().expect("should have a window in this context");
     let performance = window.performance().expect("performance should be available");
