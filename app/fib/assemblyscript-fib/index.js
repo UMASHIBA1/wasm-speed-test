@@ -7,5 +7,15 @@ async function sample() {
 }
 
 sample().then((wasmModule) => {
-    console.log(wasmModule.exports.add(2,2));
-})
+    for (let i = 10; i <= 50; i += 10) {
+        console.group();
+        console.log(`n: ${i}`)
+        const startFib = performance.now();
+        console.log(`start fib ${startFib}`);
+        console.log(`fib result ${wasmModule.exports.fib(BigInt(i))}`);
+        const endFib = performance.now();
+        console.log(`end fib ${endFib}`);
+        console.log(`processing time: ${endFib - startFib}ms`);
+        console.groupEnd();
+    };
+});

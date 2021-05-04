@@ -15,7 +15,7 @@
   \******************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const loader = __webpack_require__(/*! @assemblyscript/loader */ \"./node_modules/@assemblyscript/loader/umd/index.js\");\n\nasync function sample() {\n    const wasmModule = await loader.instantiate(fetch(\"/wasm\"), {});\n\n    return wasmModule;\n}\n\nsample().then((wasmModule) => {\n    console.log(wasmModule.exports.add(2,2));\n})\n\n//# sourceURL=webpack://assemblyscript-fib/./index.js?");
+eval("const loader = __webpack_require__(/*! @assemblyscript/loader */ \"./node_modules/@assemblyscript/loader/umd/index.js\");\n\nasync function sample() {\n    const wasmModule = await loader.instantiate(fetch(\"/wasm\"), {});\n\n    return wasmModule;\n}\n\nsample().then((wasmModule) => {\n    for (let i = 10; i <= 50; i += 10) {\n        console.group();\n        console.log(`n: ${i}`)\n        const startFib = performance.now();\n        console.log(`start fib ${startFib}`);\n        console.log(`fib result ${wasmModule.exports.fib(BigInt(i))}`);\n        const endFib = performance.now();\n        console.log(`end fib ${endFib}`);\n        console.log(`processing time: ${endFib - startFib}ms`);\n        console.groupEnd();\n    };\n});\n\n//# sourceURL=webpack://assemblyscript-fib/./index.js?");
 
 /***/ }),
 
