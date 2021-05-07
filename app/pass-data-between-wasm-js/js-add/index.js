@@ -4,12 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return a + b;
         }
 
-        const iterationNum = 100000000000; // 1000億
+        const iterationNum = 10000000000;
 
         console.log("iterationNum", iterationNum);
         const startTime = performance.now();
+        let total = 0;
         for (let i = 1; i <= iterationNum; i++) {
-            add(1, i);
+            total = add(total, i);
         } 
         const endTime = performance.now();
         console.log(`processing time: ${endTime - startTime}ms`);
