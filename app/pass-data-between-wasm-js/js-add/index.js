@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return a + b;
         }
 
-        const iterationNum = 10000000000;
+        const iterationNum = 100000000;
 
         console.log("iterationNum", iterationNum);
         const startTime = performance.now();

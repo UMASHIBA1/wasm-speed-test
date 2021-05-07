@@ -1,8 +1,13 @@
 import("../pkg").then(module => {
-        console.log("start processing");
+
+        const iterationNum = 100000000;
+
+        console.log("iterationNum", iterationNum);
         const startTime = performance.now();
-        const total = module.add_calc(BigInt(1000000000000));
+        let total = 0;
+        for (let i = 1; i <= iterationNum; i++) {
+                total = module.add(total, i);
+        }
         const endTime = performance.now();
-        console.log(total);
         console.log(`processing time: ${endTime - startTime}ms`);
 })
