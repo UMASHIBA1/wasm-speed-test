@@ -18,24 +18,11 @@ macro_rules! console_log {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
-fn fib(n: i64) -> i64 {
+#[wasm_bindgen]
+pub fn fib(n: i64) -> i64 {
     if n <= 1 {
         return n
     }
 
     fib(n - 1) + fib(n - 2)
-}
-
-#[wasm_bindgen]
-pub fn calc(n: i64) {
-
-    let window = web_sys::window().expect("should have a window in this context");
-    let performance = window.performance().expect("performance should be available");
-    console_log!("n: {}", n);
-    let startFib = performance.now();
-    console_log!("start lib {}", startFib);
-    console_log!("fib result {}", fib(n));
-    let endFib = performance.now();
-    console_log!("end fib {}", endFib);
-    console_log!("processing time: {}ms", endFib - startFib);
 }
