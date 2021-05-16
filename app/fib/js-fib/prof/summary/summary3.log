@@ -1,0 +1,186 @@
+Statistical profiling result from ./isolate-0x118008000-2730-v8.log, (959 ticks, 147 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+      2    0.2%          /usr/lib/system/libsystem_kernel.dylib
+      2    0.2%          /usr/lib/system/libsystem_c.dylib
+      2    0.2%          /usr/lib/libc++.1.dylib
+      1    0.1%          /usr/lib/system/libsystem_pthread.dylib
+      1    0.1%          /usr/lib/system/libsystem_malloc.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+    729   76.0%   76.7%  LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+
+ [C++]:
+   ticks  total  nonlib   name
+     30    3.1%    3.2%  T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+     18    1.9%    1.9%  T __ZN4node13native_module15NativeModuleEnv15CompileFunctionERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+     14    1.5%    1.5%  T _semaphore_create
+      3    0.3%    0.3%  t __ZN4nodeL3CwdERKN2v820FunctionCallbackInfoINS0_5ValueEEE
+      3    0.3%    0.3%  T __ZN4node7TTYWrap3NewERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+      2    0.2%    0.2%  t __platform_task_deallocate
+      2    0.2%    0.2%  t __ZNSt3__116__pad_and_outputIcNS_11char_traitsIcEEEENS_19ostreambuf_iteratorIT_T0_EES6_PKS4_S8_S8_RNS_8ios_baseES4_
+      1    0.1%    0.1%  T ___commpage_gettimeofday
+      1    0.1%    0.1%  T __ZN4node6loader10ModuleWrap8EvaluateERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+      1    0.1%    0.1%  T __ZN4node14options_parser10GetOptionsERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+
+ [Summary]:
+   ticks  total  nonlib   name
+    729   76.0%   76.7%  JavaScript
+     75    7.8%    7.9%  C++
+      0    0.0%    0.0%  GC
+      8    0.8%          Shared libraries
+    147   15.3%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     61  100.0%    6.4%  T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    729   76.0%  LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+    729  100.0%    LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+    729  100.0%      LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+    729  100.0%        LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+    729  100.0%          LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+    729  100.0%            LazyCompile: *fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+
+    147   15.3%  UNKNOWN
+
+     30    3.1%  T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+     18   60.0%    T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+      2   11.1%      T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+      2  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:484:28
+      1   50.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:12:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:69:31
+      1   50.0%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:839:35
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:747:24
+      2   11.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      2  100.0%        Eval: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.6%      LazyCompile: ~writeOrBuffer node:internal/streams/writable:371:23
+      1  100.0%        LazyCompile: ~Writable.write node:internal/streams/writable:293:36
+      1  100.0%          LazyCompile: ~value node:internal/console/constructor:261:20
+      1  100.0%            LazyCompile: ~log node:internal/console/constructor:362:6
+      1    5.6%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:138:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      1  100.0%          Eval: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.6%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:78:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      1  100.0%          Eval: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.6%      LazyCompile: ~makeRequireFunction node:internal/modules/cjs/helpers:48:29
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1045:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1100:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:959:33
+      1    5.6%      LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      1  100.0%        LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      1  100.0%          LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      1  100.0%            LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      1    5.6%      LazyCompile: ~_addListener node:events:406:22
+      1  100.0%        LazyCompile: ~addListener node:events:468:58
+      1  100.0%          LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:138:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      1    5.6%      LazyCompile: ~WritableState node:internal/streams/writable:75:23
+      1  100.0%        LazyCompile: ~Writable node:internal/streams/writable:238:18
+      1  100.0%          LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%            LazyCompile: ~Socket node:net:276:16
+      1    5.6%      LazyCompile: ~Module._load node:internal/modules/cjs/loader:747:24
+      1  100.0%        LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:69:31
+      1  100.0%          Eval: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.6%      Eval: ~<anonymous> node:internal/options:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:internal/bootstrap/pre_execution:1:1
+      1    5.6%      Eval: ~<anonymous> node:internal/modules/esm/resolve:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1    5.6%      Eval: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:413:29
+      1    5.6%      Eval: ~<anonymous> node:internal/modules/cjs/helpers:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1    5.6%      Eval: ~<anonymous> node:internal/fs/utils:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:fs:1:1
+      1    5.6%      Eval: ~<anonymous> node:fs:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      2    6.7%    LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      2  100.0%      LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      2  100.0%        LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      2  100.0%          LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      2  100.0%            LazyCompile: ~fib /Users/umauma/Documents/AnyProject/wasm-speed-test/app/fib/js-fib/index.js:3:22
+      1    3.3%    LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:66:35
+      1    3.3%    Eval: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:413:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+
+     18    1.9%  T __ZN4node13native_module15NativeModuleEnv15CompileFunctionERKN2v820FunctionCallbackInfoINS2_5ValueEEE
+     18  100.0%    T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+     18  100.0%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+     17   94.4%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      3   17.6%          Eval: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      3  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      3   17.6%          Eval: ~<anonymous> node:internal/main/run_main_module:1:1
+      2   11.8%          LazyCompile: ~initializeReport node:internal/bootstrap/pre_execution:179:26
+      2  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      1    5.9%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:413:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:21:36
+      1    5.9%          Eval: ~<anonymous> node:tty:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:net:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:internal/process/esm_loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:internal/modules/package_json_reader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.9%          Eval: ~<anonymous> node:fs:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1    5.6%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:219:25
+      1  100.0%          LazyCompile: ~loadNativeModule node:internal/modules/cjs/helpers:35:26
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:747:24
+
+     14    1.5%  T _semaphore_create
+      6   42.9%    T __ZN2v88internal12AsmJsScannerC1EPNS0_20Utf16CharacterStreamE
+      2   33.3%      LazyCompile: ~hideStackFrames node:internal/errors:336:25
+      1   50.0%        Eval: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1   50.0%        Eval: ~<anonymous> node:fs:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1   16.7%      LazyCompile: ~realpathSync node:fs:1715:22
+      1  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:383:20
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:484:28
+      1  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:12:25
+      1   16.7%      LazyCompile: ~PerformanceNodeTiming node:perf_hooks:182:14
+      1  100.0%        Eval: ~<anonymous> node:perf_hooks:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%            LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:219:25
+      1   16.7%      LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1100:37
+      1  100.0%        LazyCompile: ~Module.load node:internal/modules/cjs/loader:959:33
+      1  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:747:24
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:69:31
+      1   16.7%      Eval: ~<anonymous> node:internal/tty:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:270:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:303:29
+      1  100.0%            Eval: ~<anonymous> node:tty:1:1
+
